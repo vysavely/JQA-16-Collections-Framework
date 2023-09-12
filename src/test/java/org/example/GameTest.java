@@ -15,8 +15,8 @@ public class GameTest {
     public void shouldWinPlayer1() {
         Game game = new Game();
 
-        game.registered(player1);
-        game.registered(player2);
+        game.register(player1);
+        game.register(player2);
 
         int expected = 1;
         int actual = game.round("Иван", "Олег");
@@ -28,8 +28,8 @@ public class GameTest {
     public void shouldWinPlayer2() {
         Game game = new Game();
 
-        game.registered(player3);
-        game.registered(player5);
+        game.register(player3);
+        game.register(player5);
 
         int expected = 2;
         int actual = game.round("Андрей", "Максим");
@@ -41,8 +41,8 @@ public class GameTest {
     public void drawnGameTest() { //ничья, силы участников равны
         Game game = new Game();
 
-        game.registered(player3);
-        game.registered(player4);
+        game.register(player3);
+        game.register(player4);
 
         int expected = 0;
         int actual = game.round("Андрей", "Василий");
@@ -54,7 +54,7 @@ public class GameTest {
     public void notRegisteredPlayer1() {
         Game game = new Game();
 
-        game.registered(player2);
+        game.register(player2);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             game.round("Oleg", "Олег");
@@ -65,7 +65,7 @@ public class GameTest {
     public void notRegisteredPlayer2() {
         Game game = new Game();
 
-        game.registered(player3);
+        game.register(player3);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             game.round("Андрей", "Anton");
